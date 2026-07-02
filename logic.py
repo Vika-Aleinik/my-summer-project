@@ -1,3 +1,5 @@
+import random
+
 def create_grid(rows, cols, density):
     grid = []
     for i in range(rows):
@@ -14,7 +16,7 @@ def create_grid(rows, cols, density):
 def count_alive_neighbors(grid, row, col):
     count = 0
     rows = len(grid)
-    cols = len(grid) 
+    cols = len(grid[0])
 
     for i in range(max(0, row - 1), min(rows, row + 2)):
         for j in range(max(0, col - 1), min(cols, col + 2)):
@@ -29,8 +31,13 @@ def count_alive_neighbors(grid, row, col):
 
 def make_next_generation(grid):
     rows = len(grid)
-    cols = len(grid)
-    next_grid = [[0 for _ in range(cols)] for _ in range(rows)]
+    cols = len(grid[0])
+    next_grid = []
+    for _ in range(rows):
+        arr = []
+        for _ in range(cols):
+            arr.append(0)
+        next_grid.append(arr)
     for i in range(rows):
         for j in range(cols):
             neighbors = count_alive_neighbors(grid, i, j)
