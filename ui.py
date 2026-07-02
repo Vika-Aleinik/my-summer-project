@@ -1,3 +1,5 @@
+import os
+
 def clear_screen():
     pass
 
